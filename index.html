@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Bases Numéricas</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: linear-gradient(to top, #8BC6EC, #9599e2);
+            background-repeat: no-repeat;
+        }
+
+        .header {
+            background-color: #6c6faa;
+            color: white;
+            border-bottom: 2px solid blueviolet;
+            margin-bottom: 38px;
+        }
+
+        .header .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .navbar {
+            display: flex;
+            width: 50%;
+            justify-content: space-around;
+            align-items: center;
+
+            list-style: none;
+            color: white;
+        }
+        
+        .traco {
+            height: 100px;
+            width: 1px;
+            background-color: black;
+            border: 1px solid black;
+            border-radius: 20px;
+            margin: 5px;
+        }
+
+        .content {
+            background-color: blanchedalmond;
+            width: 90%;
+            margin: auto;
+            border: 2px solid black;
+            border-radius: 20px;
+            padding-bottom: 10px;
+        }
+
+        .content span {
+            font-size: larger;
+            font-weight: 900;
+            margin-top: 10px;
+        }
+
+        .content button {
+            width: 208px;
+            margin-top: 25px;
+            border-radius: 20px;
+        }
+
+        .content input {
+            width: 200px;
+            border-radius: 20px;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Conversor</h1>
+            <ul class="navbar">
+                <li>Decimal</li>
+                <li>Binário</li>
+                <li>|</li>
+                <li>Octal</li>
+                <li>Hexadecimal</li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <h1>Conversão de bases numéricas</h1>
+
+            <span>Decimal</span>
+            <input type="text" id="iptDecimal" placeholder="Digite um número decimal">
+
+            <span>Binario</span>
+            <input type="text" id="iptBinario" placeholder="Digite um número binário">
+
+            <span>Octal</span>
+            <input type="text" id="iptOctal" placeholder="Digite um número octal">
+
+            <span>Hexadecimal</span>
+            <input type="text" id="iptHexa" placeholder="Digite um número hexadecimal">
+
+            <button onclick="converter()">Converter</button>
+
+            <div class="result">
+                <h3>Os seus resultados aparecerão abaixo!</h3>
+                <div id="res"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function converter() {
+        var decimal = iptDecimal.value
+        var binario = iptBinario.value
+        var octal = iptOctal.value
+        var hexa = iptHexa.value
+
+        res.innerHTML =
+            `
+            <h4>Decimal</h4>
+                <div class="res">
+                    <ul>
+                        <li>Decimal: ${decimal}</li>
+                        <li>Binario: ${parseInt(decimal,10).toString(2)}</li>
+                        <li>Octal: ${parseInt(decimal,10).toString(8)}</li>
+                        <li>Hexadecimal: ${parseInt(decimal,10).toString(16)}</li>
+                    </ul>
+                </div>
+                <div class="traco">
+            `
+
+        res.innerHTML +=
+            `
+                <h4>Binário</h4>
+                <div class="res">
+                    <ul>
+                        <li>Binário: ${binario}</li>
+                        <li>Decimal: ${parseInt(binario,2).toString(10)}</li>
+                        <li>Octal: ${parseInt(binario,2).toString(8)}</li>
+                        <li>Hexadecimal: ${parseInt(binario,2).toString(16)}</li>
+                    </ul>
+                </div>
+                <div class="traco">
+            `
+
+        res.innerHTML +=
+            `
+                <h4>Octal</h4>
+                <div class="res">
+                    <ul>
+                        <li>Octal: ${octal}</li>
+                        <li>Decimal: ${parseInt(octal,8).toString(10)}</li>
+                        <li>Binário: ${parseInt(octal,8).toString(2)}</li>
+                        <li>Hexadecimal: ${parseInt(octal,8).toString(16)}</li>
+                    </ul>
+                </div>
+                <div class="traco">
+            `
+
+        res.innerHTML +=
+            `
+                <h4>Hexadecimal</h4>
+                <div class="res">
+                    <ul>
+                        <li>Hexadecimal: ${hexa}</li>
+                        <li>Decimal: ${parseInt(hexa,16).toString(10)}</li>
+                        <li>Binário: ${parseInt(hexa,16).toString(2)}</li>
+                        <li>Octal: ${parseInt(hexa,16).toString(8)}</li>
+                    </ul>
+                </div>
+            `
+    }
+</script>
